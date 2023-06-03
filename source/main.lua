@@ -3,16 +3,15 @@ import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
 
-import "Player"
+import "Capybara"
 import "Obstacle"
 
 local pd <const> = playdate
 local gfx <const> = playdate.graphics
 
 local function initialize()
-	local capybaraImage = gfx.image.new("images/capybara_base")
 	local crocodileImage = gfx.image.new("images/crocodile")
-	local playerInstance = Player(100, 200, capybaraImage)
+	local playerInstance = Capybara(100, 200)
 	local crocodileInstance = Obstacle(400, 200, 2, crocodileImage)
 	playerInstance:add()
 	crocodileInstance:add()
