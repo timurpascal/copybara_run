@@ -14,9 +14,9 @@ end
 
 function Obstacle:update()
   Obstacle.super.update(self)
-  -- self:moveBy(-self.speed, 0)
-  -- local actualX, actualY, collisions, length = self:moveWithCollisions(self.x - self.speed, self.y)
-  -- if actualX < 0 then
-  --   self:moveBy(self.initialX, 0)
-  -- end
+  self:moveBy(-self.speed, 0)
+  local actualX, actualY, collisions, length = self:moveWithCollisions(self.x - self.speed, self.y)
+  if actualX < 0 then
+    self:moveBy(self.initialX, 0)
+  end
 end
