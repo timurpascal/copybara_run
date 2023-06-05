@@ -12,7 +12,7 @@ local gfx <const> = playdate.graphics
 local function initialize()
 	local crocodileImage = gfx.image.new("images/crocodile")
 	local playerInstance = Capybara(100, 200)
-	local crocodileInstance = Obstacle(400, 200, 2, crocodileImage)
+	local crocodileInstance = Obstacle(400, 200, 3, crocodileImage)
 	playerInstance:add()
 	crocodileInstance:add()
 end
