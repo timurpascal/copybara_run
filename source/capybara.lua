@@ -16,7 +16,7 @@ function Capybara:init(x, y)
 
   self.initialY = y
   self.animationLoop = gfx.animation.loop.new(100, imageTable, true)
-  self.jumpAnimation = gfx.animator.new(300, 0, 50, pd.easingFunctions.inOutCubic)
+  self.jumpAnimation = gfx.animator.new(800, 0, 40, pd.easingFunctions.inOutQuint)
   self.jumpAnimation.reverses = true
   self.moveSpeed = 3
 end
