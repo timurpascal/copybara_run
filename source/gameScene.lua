@@ -17,9 +17,12 @@ function GameScene:init()
   playerInstance:add()
   crocodileInstance:add()
   groundInstance:add()
+
+  self:add()
 end
 
 function GameScene:update()
-  gfx.sprite.update()
-  pd.timer.updateTimers()
+  if pd.buttonJustPressed(pd.kButtonA) then
+    SCENE_MANAGER:switchScene(GameOverScene)
+  end
 end

@@ -16,7 +16,6 @@ end
 function Ground:slideAnimation()
   local x, y = self:getPosition()
   self:moveBy(-self.moveSpeed, 0)
-  print(x, y)
   if x == self.moveSpeed then
     self:moveTo(self.startGround, y);
   end
