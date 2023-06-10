@@ -4,15 +4,14 @@ import "CoreLibs/sprites"
 import "CoreLibs/timer"
 
 import "sceneManager"
-import "gameScene"
-import "gameOverScene"
+import "startScene"
 
 local pd <const> = playdate
 local gfx <const> = playdate.graphics
 
 SCENE_MANAGER = SceneManager()
 
-GameOverScene()
+StartScene()
 
 function pd.update()
 	gfx.sprite.update()
