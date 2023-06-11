@@ -1,4 +1,5 @@
 import "CoreLibs/animation"
+import "Obstacle"
 
 local pd <const> = playdate
 local gfx <const> = pd.graphics
@@ -13,6 +14,7 @@ function Capybara:init(x, y)
   self:moveTo(x, y)
   self:setImage(capybaraImage)
   self:setCollideRect(0, 0, self:getSize())
+  self:setTag(TAGS.Player)
 
   self.initialY = y
   self.animationLoop = gfx.animation.loop.new(100, imageTable, true)
@@ -31,10 +33,13 @@ end
 
 function Capybara:updateJumpAnimation()
   local x, y = self:getPosition()
-  if self.jumpAnimation then
-    self:moveWithCollisions(x, self.initialY - self.jumpAnimation:currentValue())
-  elseif self.jumpAnimation:ended() then
-    self.moveWithCollisions(x, self.initialY)
+  local _, _, collisions, length = self:moveWithCollisions(x, self.initialY - self.jumpAnimation:currentValue())
+  for i = 1, length do
+    local collision = collisions[i]
+    local collisionObject = collision.other
+    if collisionObject:getTag() == TAGS.Obstacle then
+      SCENE_MANAGER:switchScene(GameOverScene)
+    end
   end
 end
 

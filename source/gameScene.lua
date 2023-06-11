@@ -6,6 +6,12 @@ import "Ground"
 local pd <const> = playdate
 local gfx <const> = playdate.graphics
 
+TAGS = {
+  Obstacle = 1,
+  Ground = 2,
+  Player = 3
+}
+
 class('GameScene').extends(gfx.sprite)
 
 function GameScene:init()
