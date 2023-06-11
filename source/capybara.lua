@@ -18,13 +18,12 @@ function Capybara:init(x, y)
 
   self.initialY = y
   self.animationLoop = gfx.animation.loop.new(100, imageTable, true)
-  self.jumpAnimation = gfx.animator.new(800, 0, 40, pd.easingFunctions.inOutQuint)
-  self.jumpAnimation.reverses = true
   self.moveSpeed = 3
 end
 
 function Capybara:jump()
-  self.jumpAnimation:reset()
+  self.jumpAnimation = gfx.animator.new(800, 0, 40, pd.easingFunctions.inOutQuint)
+  self.jumpAnimation.reverses = true
 end
 
 function Capybara:updateRunAnimation()
@@ -32,13 +31,15 @@ function Capybara:updateRunAnimation()
 end
 
 function Capybara:updateJumpAnimation()
-  local x, y = self:getPosition()
-  local _, _, collisions, length = self:moveWithCollisions(x, self.initialY - self.jumpAnimation:currentValue())
-  for i = 1, length do
-    local collision = collisions[i]
-    local collisionObject = collision.other
-    if collisionObject:getTag() == TAGS.Obstacle then
-      SCENE_MANAGER:switchScene(GameOverScene)
+  if self.jumpAnimation then
+    local x, y = self:getPosition()
+    local _, _, collisions, length = self:moveWithCollisions(x, self.initialY - self.jumpAnimation:currentValue())
+    for i = 1, length do
+      local collision = collisions[i]
+      local collisionObject = collision.other
+      if collisionObject:getTag() == TAGS.Obstacle then
+        SCENE_MANAGER:switchScene(GameOverScene)
+      end
     end
   end
 end
