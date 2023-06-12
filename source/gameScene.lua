@@ -26,9 +26,3 @@ function GameScene:init()
 
   self:add()
 end
-
-function GameScene:update()
-  if pd.buttonJustPressed(pd.kButtonA) then
-    SCENE_MANAGER:switchScene(GameOverScene)
-  end
-end

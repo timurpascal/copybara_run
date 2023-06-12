@@ -17,6 +17,7 @@ function Capybara:init(x, y)
   self:setTag(TAGS.Player)
 
   self.initialY = y
+  self.jumpAnimation = nil
   self.animationLoop = gfx.animation.loop.new(100, imageTable, true)
   self.moveSpeed = 3
 end
