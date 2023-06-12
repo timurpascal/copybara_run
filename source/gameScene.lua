@@ -23,6 +23,8 @@ OBSTACLE_BASE_COORDINATES = {
   y = 200
 }
 
+score = 0
+
 local labelSprite = nil
 local labelImage = nil
 
@@ -33,19 +35,18 @@ function GameScene:init()
   local groundInstance = Ground()
 
   self.obstacleInstance = nil
-  self.score = 0
   self.scoreTimer = pd.timer.new(1, 1)
   self.scoreTimer.repeats = true
   self.scoreTimer.updateCallback = function(timer)
     if timer.value == 0 then
-      self.score += 1
+      score += 1
     end
   end
 
   labelSprite = gfx.sprite.new()
   labelImage = gfx.image.new(200, 20)
   gfx.pushContext(labelImage)
-    gfx.drawText("Score: " .. self.score, 0, 0)
+    gfx.drawText("Score: " .. score, 0, 0)
   gfx.popContext()
   labelSprite:setImage(labelImage)
   labelSprite:add()
@@ -86,7 +87,7 @@ function GameScene:moveObsticle()
       local collision = collisions[i]
       local collisionObject = collision.other
       if collisionObject:getTag() == TAGS.Player then
-        SCENE_MANAGER:switchScene(GameOverScene, "Score: " .. self.score)
+        SCENE_MANAGER:switchScene(GameOverScene, "Score: " .. score)
       end
     end
 
@@ -101,7 +102,7 @@ end
 function GameScene:updateScore()
   labelImage:clear(gfx.kColorWhite)
   gfx.pushContext(labelImage)
-    gfx.drawText("Score: " .. self.score, 0, 0)
+    gfx.drawText("Score: " .. score, 0, 0)
   gfx.popContext()
 end
 

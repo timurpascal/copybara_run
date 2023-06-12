@@ -39,7 +39,7 @@ function Capybara:updateJumpAnimation()
       local collision = collisions[i]
       local collisionObject = collision.other
       if collisionObject:getTag() == TAGS.Obstacle then
-        SCENE_MANAGER:switchScene(GameOverScene)
+        SCENE_MANAGER:switchScene(GameOverScene, "Score: " .. score)
       end
     end
   end
