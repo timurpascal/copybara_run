@@ -26,15 +26,12 @@ OBSTACLE_BASE_COORDINATES = {
 class('GameScene').extends(gfx.sprite)
 
 function GameScene:init()
-  -- local crocodileImage = gfx.image.new("images/crocodile")
   local playerInstance = Capybara(100, 200)
-  -- local crocodileInstance = Obstacle(400, 200, 2, crocodileImage)
   local groundInstance = Ground()
 
   self.obstacleInstance = nil
 
   playerInstance:add()
-  -- crocodileInstance:add()
   groundInstance:add()
 
   self:add()
@@ -63,8 +60,7 @@ end
 function GameScene:moveObsticle()
   if self.obstacleInstance then
     local obstacle = self.obstacleInstance
-    local actualX, actualY, collisions, length = obstacle:moveWithCollisions(obstacle.x - obstacle.speed, obstacle.y)
-    -- obstacle:moveBy(-obstacle.speed, 0)
+    local actualX, _, collisions, length = obstacle:moveWithCollisions(obstacle.x - obstacle.speed, obstacle.y)
     for i = 1, length do
       local collision = collisions[i]
       local collisionObject = collision.other
