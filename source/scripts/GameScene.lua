@@ -57,7 +57,7 @@ function GameScene:init()
   self.ground = Ground(INIT_GROUND.x, INIT_GROUND.y, self)
   self.scoreboard = Scoreboard(self)
   self.UI = UI(self)
-  self.UI:showStartPanel()
+  -- self.UI:showStartPanel()
 
 
   self.player:add()
@@ -66,22 +66,22 @@ function GameScene:init()
   self:add()
 end
 
-function GameScene:restart()
-  -- self:init()
-  -- self.speed = DEFAULT_SPEED
-  -- self.pointsFromStart = 0
-  -- self.points = 0
-  -- self.timer = 0
-  -- self.timerFromLastEnemy = 0
-  -- self.enemiesCounter = 0
-  -- self.lastEnemy = nil
-  -- self.cloudCounter = 0
-  -- self.lastCloud = nil
-  -- self.dead = false
-  -- self.player = Player(INIT_PLAYER.x, INIT_PLAYER.y, self)
-  -- self.ground = Ground(INIT_GROUND.x, INIT_GROUND.y, self)
-  -- self.scoreboard = Scoreboard(self)
-end
+-- function GameScene:restart()
+-- self:init()
+-- self.speed = DEFAULT_SPEED
+-- self.pointsFromStart = 0
+-- self.points = 0
+-- self.timer = 0
+-- self.timerFromLastEnemy = 0
+-- self.enemiesCounter = 0
+-- self.lastEnemy = nil
+-- self.cloudCounter = 0
+-- self.lastCloud = nil
+-- self.dead = false
+-- self.player = Player(INIT_PLAYER.x, INIT_PLAYER.y, self)
+-- self.ground = Ground(INIT_GROUND.x, INIT_GROUND.y, self)
+-- self.scoreboard = Scoreboard(self)
+-- end
 
 function GameScene:start()
   self.dead = false
@@ -89,7 +89,7 @@ end
 
 function GameScene:defeat()
   self.dead = true
-  self.UI:showRestartPanel()
+  -- self.UI:showRestartPanel()
 end
 
 function GameScene:createEnemy()
