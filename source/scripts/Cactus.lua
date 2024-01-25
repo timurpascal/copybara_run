@@ -9,9 +9,9 @@ local cactusNames = {
   'cactus-small-3',
 }
 
-class("Spike").extends(gfx.sprite)
+class("Cactus").extends(gfx.sprite)
 
-function Spike:init(x, y, gameManager)
+function Cactus:init(x, y, gameManager)
   self.gameManager = gameManager
 
   self:setZIndex(Z_INDEXES.Hazard)
@@ -27,7 +27,7 @@ function Spike:init(x, y, gameManager)
   self:setCollideRect(0, 0, self:getSize())
 end
 
-function Spike:moveEnemy()
+function Cactus:moveEnemy()
   local x, y = self:getPosition()
   local _, _, collisions, length = self:moveWithCollisions(x - self.gameManager.speed, y)
 
@@ -37,7 +37,7 @@ function Spike:moveEnemy()
   end
 end
 
-function Spike:update()
+function Cactus:update()
   if self.gameManager.dead then
     return
   end

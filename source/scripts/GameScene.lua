@@ -66,23 +66,6 @@ function GameScene:init()
   self:add()
 end
 
--- function GameScene:restart()
--- self:init()
--- self.speed = DEFAULT_SPEED
--- self.pointsFromStart = 0
--- self.points = 0
--- self.timer = 0
--- self.timerFromLastEnemy = 0
--- self.enemiesCounter = 0
--- self.lastEnemy = nil
--- self.cloudCounter = 0
--- self.lastCloud = nil
--- self.dead = false
--- self.player = Player(INIT_PLAYER.x, INIT_PLAYER.y, self)
--- self.ground = Ground(INIT_GROUND.x, INIT_GROUND.y, self)
--- self.scoreboard = Scoreboard(self)
--- end
-
 function GameScene:start()
   self.dead = false
 end
@@ -95,7 +78,7 @@ end
 function GameScene:createEnemy()
   local enemyType = math.random(2)
   if enemyType == 1 then
-    self.lastEnemy = Spike(PD_SCREEN.width, BASE_Y, self)
+    self.lastEnemy = Cactus(PD_SCREEN.width, BASE_Y, self)
   elseif enemyType == 2 then
     self.lastEnemy = Pterodactyl(PD_SCREEN.width, BASE_Y, self)
   end
